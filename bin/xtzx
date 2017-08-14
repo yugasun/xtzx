@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const cli = require('../index')
+const cmd = process.argv[2]
+
+if (cmd) {
+  cli.run(cmd)
+} else {
+  cli.run('help')
+}

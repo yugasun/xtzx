@@ -1,0 +1,39 @@
+{
+  "name": "xtzx",
+  "version": "2.0.0",
+  "description": "xuetangx 通用工具",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "xtzx": "./bin/xtzx"
+  },
+  "dependencies": {
+    "blueimp-md5": "^2.8.0",
+    "chalk": "^2.1.0",
+    "extend": "^3.0.1",
+    "formstream": "^1.1.0",
+    "fs-extra": "^4.0.1",
+    "glob": "^7.1.2",
+    "u-help": "^1.0.1",
+    "urllib": "^2.24.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yugasun/xtzx.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "yugasun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yugasun/xtzx/issues"
+  },
+  "homepage": "https://github.com/yugasun/xtzx#readme"
+}
