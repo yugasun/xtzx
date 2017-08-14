@@ -2,6 +2,9 @@
  * 上传文件到storage
  * @augments --no-md5 不加MD5时间戳
  */
+
+require('dotenv').config()
+
 const canUploadType = ['.js', '.css', '.jpg', '.png', '.gif', '.json']
 
 const util = require('../util')
@@ -16,6 +19,7 @@ const urllib = require('urllib')
 const form = formstream()
 const config = util.getConfig()
 const args = util.args()
+
 
 let currentFile = ''
 /**
@@ -103,7 +107,7 @@ function uploadFile(filePath) {
 
   form.file('file', filePath)
 
-  urllib.request(config.storage + pathObj.base, {
+  urllib.request(config.storage + '?filename=' + pathObj.base + '&key=' + process.env.KEY, {
     method: 'post',
     headers: form.headers(),
     stream: form
@@ -118,17 +122,24 @@ function uploadFile(filePath) {
  */
 function callback(err, data, res, filePath) {
   if (!err) {
-    let time = formatTime(new Date(), 'yyyy-MM-dd HH:mm:ss')
-    let result = '[' + time + '] ' + JSON.parse(data.toString()).url
+    let res = JSON.parse(data.toString())
+    console.log(res)
+    if (res.success === true) {
+      let time = formatTime(new Date(), 'yyyy-MM-dd HH:mm:ss')
+      let result = '[' + time + '] ' + res.url
 
-    if (!~args.ctrl.indexOf('out')) {
-      console.log(chalk.bgGreen.black(' DONE ') + chalk.green(result + '\n'))
+      if (!~args.ctrl.indexOf('out')) {
+        console.log(chalk.bgGreen.black(' DONE ') + chalk.green(' ' + result + '\n'))
+      } else {
+        outputFile(result, filePath)
+      }
     } else {
-      outputFile(result, filePath)
-
+      console.log(chalk.bgRed.black(' ERROR ') + chalk.red(' ' + res.error_message))
     }
 
+
   } else {
+    console.log(chalk.bgRed.black(' ERROR ') + chalk.red(err))
     console.log(chalk.bgRed.black(' ERROR ') + chalk.red('请确认已经连接发布环境vpn, 如果已连接请重试。'))
   }
 }

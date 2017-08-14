@@ -136,6 +136,10 @@ digest-header@^0.0.1:
   dependencies:
     utility "0.1.11"
 
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "http://registry.npm.taobao.org/dotenv/download/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
 ee-first@~1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
