@@ -40,7 +40,16 @@ module.exports = {
 
     opts.forEach(function (value) {
       if (rtag.test(value)) {
-        res.ctrl.push(value.replace(rtag, ''))
+        let ctrl = value.replace(rtag, '')
+        if (!~ctrl.indexOf('=')) {
+          res.ctrl.push(ctrl)
+        } else {
+          let arr = ctrl.split('=')
+          if (arr[0] === 'out') {
+            res.ctrl.push(arr[0])
+            res.output = arr[1]
+          }
+        }
       } else {
         res.param.push(value)
       }
