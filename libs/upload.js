@@ -22,7 +22,6 @@ const args = util.args()
  */
 function upload () {
   let filePath
-  console.log(args)
   if (args.param.length && fs.existsSync(args.param[0])) {
     filePath = args.param[0]
 
