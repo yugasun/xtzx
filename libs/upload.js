@@ -13,7 +13,6 @@ const md5 = require('blueimp-md5')
 const chalk = require('chalk')
 const formstream = require('formstream')
 const urllib = require('urllib')
-const form = formstream()
 const config = util.getConfig()
 const args = util.args()
 
@@ -100,7 +99,7 @@ function uploadFile(filePath) {
 
   // 上传路径覆写
   pathObj.dir = distPath
-
+  let form = formstream()
   form.file('file', filePath)
   urllib.request(config.storage + pathObj.dir + '/' + pathObj.base, {
     method: 'post',
