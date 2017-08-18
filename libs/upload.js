@@ -102,8 +102,7 @@ function uploadFile(filePath) {
   pathObj.dir = distPath
 
   form.file('file', filePath)
-
-  urllib.request(config.storage + pathObj.base, {
+  urllib.request(config.storage + pathObj.dir + '/' + pathObj.base, {
     method: 'post',
     headers: form.headers(),
     stream: form
