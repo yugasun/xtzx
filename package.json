@@ -3,9 +3,6 @@
   "version": "2.1.0",
   "description": "xuetangx 通用工具",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "bin": {
     "xtzx": "./bin/xtzx"
   },
@@ -21,7 +18,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
