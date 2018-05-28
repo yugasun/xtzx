@@ -16,7 +16,9 @@
     "u-help": "^1.0.1",
     "urllib": "^2.28.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
   "scripts": {
     "test": "mocha"
   },
