@@ -102,6 +102,7 @@ function uploadFile(filePath) {
   let form = formstream()
   form.file('file', filePath)
   urllib.request(config.storage + pathObj.dir + '/' + pathObj.base, {
+    timeout: 60000,
     method: 'post',
     headers: form.headers(),
     stream: form
@@ -123,8 +124,8 @@ function callback(err, data, res, filePath) {
       console.log(chalk.bgGreen.black(' DONE ') + chalk.green(result + '\n'))
     } else {
       outputFile(result, filePath)
-
     }
+    console.log(chalk.bgRed.black(' WARNING ') + chalk.red('请将链接替换为：https://storagecdn.xuetangx.com 开头' + '\n'))
 
   } else {
     console.log(chalk.bgRed.black(' ERROR ') + chalk.red('请确认已经连接发布环境vpn, 如果已连接请重试。'))
